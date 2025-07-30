@@ -30,4 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     taskInput.value = '';
 }
-);
+   addButton.addEventListener('click', addTask);
+
+    // ✅ Enter key press
+    taskInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            addTask();
+        }
+    });
+});
