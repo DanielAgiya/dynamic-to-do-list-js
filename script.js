@@ -5,35 +5,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskList = document.getElementById('task-list');
 
     function addTask() {
-        const taskText = taskInput.value.trim();
+    const taskText = taskInput.value.trim();
 
-        if (taskText === '') {
-            alert('Please enter a task!');
-            return;
-        }
-
-        const li = document.createElement('li');
-        li.textContent = taskText;
-
-        const removeBtn = document.createElement('button');
-        removeBtn.textContent = 'Remove';
-        removeBtn.className = 'remove-btn';
-
-        removeBtn.onclick = () => {
-            taskList.removeChild(li);
-        };
-
-        li.appendChild(removeBtn);
-        taskList.appendChild(li);
-
-        taskInput.value = '';
+    if (taskText === '') {
+        alert('Please enter a task!');
+        return;
     }
 
-    addButton.addEventListener('click', addTask);
+    const li = document.createElement('li');
+    li.textContent = taskText;
 
-    taskInput.addEventListener('keypress', (event) => {
-        if (event.key === 'Enter') {
-            addTask();
-        }
-    });
-});
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'Remove';
+
+    // ✅ Use classList.add instead of className
+    removeBtn.classList.add('remove-btn');
+
+    removeBtn.onclick = () => {
+        taskList.removeChild(li);
+    };
+
+    li.appendChild(removeBtn);
+    taskList.appendChild(li);
+
+    taskInput.value = '';
+}
+);
